@@ -6,4 +6,4 @@ rate = raw_input('Enter rate:')
 hrs = int(hrs)
 rate = float(rate)
 
-print hrs * rate
+print "%1.2f" % (hrs * rate)
