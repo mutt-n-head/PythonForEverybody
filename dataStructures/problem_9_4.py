@@ -19,7 +19,7 @@ for line in handle:
 maxword = None
 maxcount = None
 
-for email,count in counts.items():
+for email, count in counts.items():
     if maxword == None or maxcount < count:
         maxword = email
         maxcount = count
