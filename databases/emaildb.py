@@ -12,7 +12,9 @@ if (len(fname) < 1 ) :
 fh = open(fname)
 
 for line in fh:
-    if not line.startswith('From: ') : continue
+    if not line.startswith('From: ') :
+        continue
+
     pieces = line.split()
     email = pieces[1]
     print email
