@@ -4,9 +4,9 @@ conn = sqlite3.connect('/Users/lisner/Desktop/py4all/databases/emaildb.sqlite')
 cur = conn.cursor()
 cur.execute('''DROP TABLE IF EXISTS Counts''')
 cur.execute('''CREATE TABLE Counts (org TEXT, count INTEGER)''')
-fname = raw_input('Enter file name: ')
+fname = input('Enter file name: ')
 
-if (len(fname) < 1 ):
+if len(fname) < 1 :
     fname = 'mbox.txt'
 
 fh = open(fname)
@@ -18,7 +18,7 @@ for line in fh:
 
     pieces = line.split()
     email = pieces[1]
-    print email
+    print(email)
     org = email.split('@')[1]
     cur.execute('SELECT count FROM Counts WHERE org = ? ', (org, ))
     row = cur.fetchone()
@@ -36,8 +36,7 @@ conn.commit()
 # https://www.sqlite.org/lang_select.html
 sqlstr = 'SELECT org, count FROM Counts ORDER BY count DESC LIMIT 10'
 
-print
-print "Counts:"
+print("Counts:")
 
 for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
