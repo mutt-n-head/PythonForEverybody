@@ -33,9 +33,27 @@ print(aa.x)
 # Note the spread operation on the data dictionary object
 
 data = {
+    'hometown': 'Baltimore',
     'fname': 'Joe',
     'lname': 'Sixpack',
-    'age': 23
+    'age': 23,
+    'random': 'frankp'
 }
 
+some_str = ['one', 'two', 'three', 'four', 'five']
+
+print(data)
 print('Resuts are {fname} and {lname} who is {age} years old'.format(**data))
+
+
+def takes_some_args(fname, lname, age, hometown, random):
+    print('{} {} who is {} and originally from {}'. format(fname, lname, age, hometown))
+
+    if random:
+        print('There was another which was {}'.format(random))
+
+
+takes_some_args(*some_str)
+# If you pass dictionary the names must match.  If they do not, then unexpected keyword argument error
+takes_some_args(**data)
+
