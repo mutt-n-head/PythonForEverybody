@@ -4,8 +4,18 @@ class PartyAnimal():
     def add_one(self):
         self.x += 1
 
+    def some_function(self):
+        print('some function in PARTY animal')
 
-class AnotherAnimal(PartyAnimal):
+
+class OriginalAnimal:
+    originalAnimalStr = 'original animal'
+
+    def some_function(self):
+        print('some function in ORIGINAL animal')
+
+
+class AnotherAnimal(OriginalAnimal, PartyAnimal):
     someStr = ""
 
     def __init__(self, beginstr):
@@ -13,6 +23,9 @@ class AnotherAnimal(PartyAnimal):
 
     def create_string(self, instr):
         self.someStr = self.someStr + " " + instr
+
+    def some_function(self):
+        PartyAnimal.some_function(self)
 
     def __del__(self):
         print("This is AnotherAnimal's destructor")
@@ -28,6 +41,7 @@ aa.add_one()
 aa.create_string('... and yet more')
 print(aa.someStr)
 print(aa.x)
+aa.some_function()
 
 # Neat trick for printing fancy wise
 # Note the spread operation on the data dictionary object
