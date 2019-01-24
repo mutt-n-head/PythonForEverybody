@@ -1,5 +1,5 @@
 class PartyAnimal():
-    x = 0
+    x = 1
 
     def add_one(self):
         self.x += 1
@@ -9,6 +9,7 @@ class PartyAnimal():
 
 
 class OriginalAnimal:
+    y = 44
     originalAnimalStr = 'original animal'
 
     def some_function(self):
@@ -34,13 +35,13 @@ class AnotherAnimal(OriginalAnimal, PartyAnimal):
 pa = PartyAnimal()
 pa.add_one()
 print(pa.x)
-
 aa = AnotherAnimal('Starter String')
 aa.add_one()
 aa.add_one()
 aa.create_string('... and yet more')
 print(aa.someStr)
 print(aa.x)
+print(aa.y)
 aa.some_function()
 
 # Neat trick for printing fancy wise
@@ -61,7 +62,7 @@ print('Resuts are {fname} and {lname} who is {age} years old'.format(**data))
 
 
 def takes_some_args(fname, lname, age, hometown, random):
-    print('{} {} who is {} and originally from {}'. format(fname, lname, age, hometown))
+    print('{} {} who is {} and originally from {}'.format(fname, lname, age, hometown))
 
     if random:
         print('There was another which was {}'.format(random))

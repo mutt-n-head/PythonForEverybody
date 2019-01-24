@@ -12,17 +12,14 @@ if len(fname) < 1 :
 fh = open(fname)
 
 for line in fh:
-
     if not line.startswith('From: '):
         continue
-
     pieces = line.split()
     email = pieces[1]
     print(email)
     org = email.split('@')[1]
     cur.execute('SELECT count FROM Counts WHERE org = ? ', (org, ))
     row = cur.fetchone()
-
     if row is None:
         cur.execute('''INSERT INTO Counts (org, count) VALUES ( ?, 1 )''', (org, ))
     else:
@@ -30,7 +27,6 @@ for line in fh:
     # This statement commits outstanding changes to disk each
     # time through the loop - the program can be made faster
     # by moving the commit so it runs only after the loop completes
-
 conn.commit()
 
 # https://www.sqlite.org/lang_select.html
